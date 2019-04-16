@@ -15,7 +15,7 @@ elif [[ $SELECT == "server" ]]; then
     ISO="ubuntu-16.04.6-server-amd64.iso"
     CASPER="install"
 else
-    echo "Usage ./gen_iso.sh [desktop|server]"
+    echo "Usage ./iso_inject.sh [desktop|server]"
     exit 1
 fi
 
