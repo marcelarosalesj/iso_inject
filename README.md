@@ -2,9 +2,12 @@
 
 ## iso_inject Usage
 ```
+# Inject to Ubuntu Desktop 16.04
 ./iso_inject.sh desktop
+# Inject to Ubuntu Server 18.04
+./iso_inject.sh serv18
 ```
-Right now only desktop ISO injection is working.
+Note: Right now Ubuntu Server 16.04 ISO injection is not working. Current process is relying on the manipulation of live image filesystem.
 
 ## QEMU commands
 ```
@@ -18,5 +21,5 @@ qemu-system-x86_64 -enable-kvm -m 2048 -hda target.img
 * You can generate StarlingX deb packages using this project https://github.com/starlingx-staging/stx-packaging
 * https://help.ubuntu.com/community/InstallCDCustomization
 * https://nathanpfry.com/how-to-customize-an-ubuntu-installation-disc/
-
+* https://serverfault.com/questions/930163/what-is-the-difference-between-ubuntu-server-and-ubuntu-server-live
 

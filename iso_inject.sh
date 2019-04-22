@@ -10,12 +10,18 @@ if [[ $SELECT == "desktop" ]]; then
     ISO="ubuntu-16.04.6-desktop-amd64.iso"
     CASPER="casper"
 elif [[ $SELECT == "server" ]]; then
-    echo "Ubuntu Server ISO Injection"
+    echo "Ubuntu Server 16.04 ISO Injection"
     BASE="http://releases.ubuntu.com/16.04"
     ISO="ubuntu-16.04.6-server-amd64.iso"
     CASPER="install"
+elif [[ $SELECT == "serv18" ]]; then
+    echo "Ubuntu Server 18.04 ISO Injection"
+    BASE="http://releases.ubuntu.com/18.04"
+    ISO="ubuntu-18.04.2-live-server-amd64.iso"
+    CASPER="casper"
+
 else
-    echo "Usage ./iso_inject.sh [desktop|server]"
+    echo "Usage ./iso_inject.sh [desktop|server|serv18]"
     exit 1
 fi
 
@@ -63,6 +69,8 @@ if [ $retcode -eq 0 ]; then
         sudo sed -i '/casper/d' $EXTRACT/$CASPER/filesystem.manifest-desktop
     elif [[ $SELECT == "server" ]]; then
         sudo sed -i '/install/d' $EXTRACT/$CASPER/filesystem.manifest-desktop
+    elif [[ $SELECT == "serv18" ]]; then
+        sudo sed -i '/casper/d' $EXTRACT/$CASPER/filesystem.manifest-desktop
     fi
 
     sudo mksquashfs $EDIT $EXTRACT/$CASPER/filesystem.squashfs -b 1048576
