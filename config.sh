@@ -18,5 +18,10 @@ apt-get update -y
 
 # Install StarlingX package
 pushd /stxdebs
-apt install -y ./fm-mgr_0.0-1_amd64.deb --allow-unauthenticated
+
+for i in $(ls); do
+    echo "Installing... $i"
+    apt install -y ./$i --allow-unauthenticated
+done
+
 popd
